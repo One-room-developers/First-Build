@@ -9,7 +9,7 @@ export class FeedPostEntity {
   @PrimaryGeneratedColumn()      // 기본키 컬럼
   id: number;
 
-  @Column({ default: ''} )       // default로 컬럼의 기본값 설정
+  @Column({ default: ''})       // default로 컬럼의 기본값 설정
   body: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

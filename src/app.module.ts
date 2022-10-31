@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeedModule } from './feed/feed.module';
+import { ShowEpisodeService } from './gamePlay/services/show-episode.service';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { FeedModule } from './feed/feed.module';
     FeedModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ShowEpisodeService],
 })
 
 export class AppModule {}
