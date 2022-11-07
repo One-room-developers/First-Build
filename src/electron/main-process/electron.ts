@@ -1,6 +1,8 @@
 import { app, BrowserWindow, dialog, screen, shell } from 'electron';
 import * as isDev from 'electron-is-dev';
 import * as path from 'path';
+import { initLocales } from './locales';
+import { createStoryDirectory, backupStoryDirectory } from './story-directory';
 
 let mainWindow: BrowserWindow | null;
 
@@ -51,3 +53,18 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+export async function initApp() {
+  try {
+    await initLocales();
+		await createStoryDirectory();
+		await backupStoryDirectory();
+    setInterval(backupStoryDirectory, 1000 * 60 * 20);
+  } catch (error) {
+    dialog.showErrorBox(
+      'An error occurred during startup.',
+      (error as Error).message
+    );
+    app.quit();
+  }
+}
