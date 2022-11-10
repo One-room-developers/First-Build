@@ -36,7 +36,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.createWindow = void 0;
 var electron_1 = require("electron");
 var isDev = require("electron-is-dev");
 var path = require("path");
@@ -70,7 +69,6 @@ function createWindow() {
         });
     });
 }
-exports.createWindow = createWindow;
 function empty() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

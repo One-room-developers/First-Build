@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "electron-start": "tsc ./electron/electron.ts && concurrently \"cross-env BROWSER=none npm run start:dev\" \"wait-on http://localhost:3000/ && electron .\"",
+    "electron-start": "tsc ./electron/electron.ts && concurrently \"cross-env BROWSER=none npm run start:dev\" \"wait-on http://localhost:3000 && electron .\"",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

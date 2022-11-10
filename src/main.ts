@@ -5,10 +5,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(
-    AppModule,
-    );
-
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,               // decorator 형식에 없는 데이터를 거름
