@@ -1,4 +1,4 @@
-import { Check, Column, Entity, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { UserEpisodeEntity } from './userEpisode.entity';
 import { MainEpisodeEntity } from './mainEpisode.entity';
 
@@ -31,11 +31,8 @@ export class OptionTextEntity {
   @Column({ default: 0 })
   mentalChange: number;
 
-  @ManyToOne( type => MainEpisodeEntity, mainepisodeentity => mainepisodeentity.optionTexts )
+  @ManyToOne( type => MainEpisodeEntity, MainEpisodeEntity => MainEpisodeEntity.options )
   mainEpisode: MainEpisodeEntity;
-
-  @RelationId((optiontextentity: OptionTextEntity) => optiontextentity.mainEpisode)
-  mainEpisodeId: number
 
   @ManyToOne( type => UserEpisodeEntity, UserEpisodeEntity => UserEpisodeEntity.options)
   userEpisode: UserEpisodeEntity;
