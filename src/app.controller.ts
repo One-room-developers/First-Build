@@ -6,6 +6,6 @@ export class AppController {
   @Get()
   @Render('index')
   home() {
-    return { message: 'Hello world!' };
+    return;
   }
 }
