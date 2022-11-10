@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { FeedModule } from './feed/feed.module';
-import { ShowEpisodeService } from './gamePlay/services/show-episode.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -18,10 +18,12 @@ import { ShowEpisodeService } from './gamePlay/services/show-episode.service';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    FeedModule
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
   ],
   controllers: [AppController],
-  providers: [ShowEpisodeService],
+  providers: [],
 })
 
 export class AppModule {}
